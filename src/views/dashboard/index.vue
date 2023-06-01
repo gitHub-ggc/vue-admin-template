@@ -6,7 +6,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-
+import { userinfo } from '@/api/moke';
 export default {
   name: 'Dashboard',
   computed: {
@@ -15,7 +15,10 @@ export default {
     ])
   },
   created(){
-    debugger
+    // debugger
+    userinfo().then(res => {
+      console.log(res)
+    })
   },
 }
 </script>

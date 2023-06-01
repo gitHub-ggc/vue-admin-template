@@ -7,7 +7,7 @@ function resolve(dir) {
 }
 
 const name = defaultSettings.title || 'vue Admin Template' // page title
-
+const mockData = require('./src/mock/data.js')
 // If your port is set to 80,
 // use administrator privileges to execute the command line.
 // For example, Mac: sudo npm run
@@ -36,8 +36,26 @@ module.exports = {
       warnings: false,
       errors: true
     },
-    before: require('./mock/mock-server.js')
+    proxy:{
+      "/api":{
+        target:"https://www.baidu.com",
+        pathRewrite:{
+          "^/api":"",
+        },
+        changeOrigin:true
+      }
+    },
+    hot:true,
+    before: require('./mock/mock-server.js'),
+    //模拟接口数据，相当于mock
+    // onBeforeSetupMiddleware: function (devServer) {
+    //   devServer.app.get('/some/path', function (req, res) {
+    //     res.json({ custom: 'response' });
+    //   });
+    //   // mockData(devServer.app)
+    // },
   },
+   //webpack配置项合并
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
     // it can be accessed in index.html to inject the correct title.
