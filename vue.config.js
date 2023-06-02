@@ -1,11 +1,11 @@
-'use strict'
+
 const path = require('path')
 const defaultSettings = require('./src/settings.js')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
-
+const webpack = require('webpack');
 const name = defaultSettings.title || 'vue Admin Template' // page title
 const mockData = require('./src/mock/data.js')
 // If your port is set to 80,
@@ -60,12 +60,34 @@ module.exports = {
     // provide the app's title in webpack's name field, so that
     // it can be accessed in index.html to inject the correct title.
     name: name,
+    // resolve: {
+    //   alias: {
+    //     '@': path.resolve(__dirname, 'src'),
+    //     '@api': path.resolve(__dirname, 'src/api/')
+    //   }
+    // }
     resolve: {
       alias: {
-        '@': resolve('src')
-      }
-    }
+        '@': resolve('src'),
+        '@api':path.join(__dirname,'src/api/')
+      },
+      //配置项目文件引入时，省略后缀
+      extensions:['.js', '.css', '.vue', '.jsx'],
+    },
+    // providePlugin({
+    //   // react: 'react',
+    //   // ...
+    // })
   },
+  // providePlugin({
+  //   // react: 'react',
+  //   // ...
+  // }),
+  //
+  // new webpack.ProvidePlugin({
+  //   identifier: 'module1',
+  //   // ...
+  // });
   chainWebpack(config) {
     // it can improve the speed of the first screen, it is recommended to turn on preload
     config.plugin('preload').tap(() => [
