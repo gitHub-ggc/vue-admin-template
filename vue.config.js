@@ -27,11 +27,11 @@ module.exports = {
   publicPath: '/',
   outputDir: 'dist',
   assetsDir: 'static',
-  lintOnSave: process.env.NODE_ENV === 'development',
+  lintOnSave: false,//是否开启eslint代码规范模式
   productionSourceMap: false,
   devServer: {
     port: port,
-    open: true,
+    open: false,
     overlay: {
       warnings: false,
       errors: true
@@ -60,10 +60,11 @@ module.exports = {
     // provide the app's title in webpack's name field, so that
     // it can be accessed in index.html to inject the correct title.
     name: name,
+    entry: './src/day01/index',
     // resolve: {
     //   alias: {
     //     '@': path.resolve(__dirname, 'src'),
-    //     '@api': path.resolve(__dirname, 'src/api/')
+    //     '@api': path.resolve(__dirname, 'src/api/')`
     //   }
     // }
     resolve: {
@@ -73,7 +74,7 @@ module.exports = {
       },
       //配置项目文件引入时，省略后缀
       extensions:['.js', '.css', '.vue', '.jsx'],
-    },
+    }
     // providePlugin({
     //   // react: 'react',
     //   // ...
