@@ -6,11 +6,15 @@
 
 <script>
 export default {
+  props:['userName'],
     name:'AAA',
   data(){
     return{
-        userName:'zhangsan'
+        // userName:'zhangsan'
     }
+  },
+  created(){
+    console.log(this)
   }
 }
 </script>

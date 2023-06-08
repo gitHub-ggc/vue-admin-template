@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import App from './test.vue'
-console.log(8888)
+import store from './store/index'
 const vm = new Vue({
+    store,
     render(h){
         return h(App)
     }

@@ -6,10 +6,11 @@
 
 <script>
 export default {
+  props:['age'],
     name:'BBB',
     data(){
         return{
-            age:99
+            // age:99
         }
     }
 }
