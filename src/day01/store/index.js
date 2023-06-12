@@ -2,6 +2,7 @@ import Vuex from 'vuex'
 import Vue from 'vue'
 import AA from './modules/aa'
 import BB from './modules/bb'
+import CC from './modules/cc'
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
@@ -14,7 +15,8 @@ const store = new Vuex.Store({
     getters:{},
     modules:{
         AA,
-        BB
+        BB,
+        CC
     }
 })
 export default store
